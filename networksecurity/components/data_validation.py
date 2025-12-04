@@ -67,7 +67,7 @@ class DataValidation:
             train_file_path = self.data_ingestion_artifact.trained_file_path
             test_file_path = self.data_ingestion_artifact.test_file_path
             
-            ## Read the train and test data from the file_Path
+            ## Read the train and test data from the file_path
             train_dataframe = DataValidation.read_data(train_file_path)
             test_dataframe = DataValidation.read_data(test_file_path)
             

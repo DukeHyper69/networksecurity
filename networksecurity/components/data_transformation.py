@@ -51,6 +51,8 @@ class DataTransformation:
         try:
             train_df = DataTransformation.read_data(self.data_validation_artifact.valid_train_file_path)
             test_df = DataTransformation.read_data(self.data_validation_artifact.valid_test_file_path)
+            print(f"Train dataframe shape:- {train_df.shape}")
+            print(f"Test dataframe shape:- {test_df.shape}")
             
             ##  training dataframe
             input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN],axis=1)
@@ -73,8 +75,11 @@ class DataTransformation:
                 transformed_input_train_feature,np.array(target_feature_train_df)
             ]
             test_arr = np.c_[
-                transformed_input_test_feature,np.array(input_feature_test_df)
+                transformed_input_test_feature,np.array(target_feature_test_df)
             ]
+            
+            print(f"Train array shape:- {train_arr.shape}")
+            print(f"Test array shape:- {test_arr.shape}")
             
             ##save numpy array data
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path,array =train_arr)
